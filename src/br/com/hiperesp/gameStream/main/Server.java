@@ -4,6 +4,7 @@ import java.awt.AWTException;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.SocketException;
+import java.util.Scanner;
 
 import br.com.hiperesp.gameStream.cast.CastServer;
 import br.com.hiperesp.gameStream.cast.ICastReceive;
@@ -71,7 +72,20 @@ public class Server implements IScreenCapture, ICastReceive {
 	}
 	
 	public static void main(String[] args) throws SocketException, AWTException {
-		Server server = new Server(8090, "png");
+
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.print("Server> Insira a porta do servidor (geralmente 8090): ");
+		int port = scanner.nextInt();
+		System.out.println();
+		
+		System.out.print("Server> Insira o encoding da transmissão (geralmente png ou jpg): ");
+		String encoding = scanner.next();
+		System.out.println();
+		
+		scanner.close();
+		
+		Server server = new Server(port, encoding);
 		server.run();
 	}
 }

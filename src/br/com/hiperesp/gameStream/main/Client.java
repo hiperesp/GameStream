@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
+import java.util.Scanner;
 
 import br.com.hiperesp.gameStream.cast.CastClient;
 import br.com.hiperesp.gameStream.cast.ICastReceive;
@@ -60,8 +61,22 @@ public class Client implements ICastReceive {
 	}
 
 	public static void main(String[] args) throws IOException, InterruptedException {
-		Client client = new Client("127.0.0.1", 8090);
+		
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.print("Client> Insira o endereço do servidor (geralmente 127.0.0.1): ");
+		String serverAddress = scanner.next();
+		System.out.println();
+		
+		System.out.print("Client> Insira a porta do servidor (geralmente 8090): ");
+		int port = scanner.nextInt();
+		System.out.println();
+		
+		scanner.close();
+		
+		Client client = new Client(serverAddress, port);
 		client.run();
+		
 	}
 
 }

@@ -17,6 +17,7 @@ public class CastClient {
 	private int bufferSize;
 	private ICastReceive screenCastCallback;
 	private boolean running;
+	@SuppressWarnings("unused")
 	private long pongNanos;
 	
 	private CastClient(InetAddress serverAddress, int serverPort, int bufferSize, ICastReceive screenCastCallback) throws SocketException {
@@ -64,7 +65,7 @@ public class CastClient {
 		}
 		if(message.is(Header.PONG_OK)) {
 			long pongConfirmationNanos = System.nanoTime();
-			System.out.println("Client> "+(pongConfirmationNanos-pongNanos)+"nanos ("+(pongConfirmationNanos-pongNanos)/1_000_000+"ms)");
+			//System.out.println("Client> ping: "+(pongConfirmationNanos-pongNanos)+"nanos ("+(pongConfirmationNanos-pongNanos)/1_000_000+"ms)");
 			pongNanos = pongConfirmationNanos;
 			return;
 		}

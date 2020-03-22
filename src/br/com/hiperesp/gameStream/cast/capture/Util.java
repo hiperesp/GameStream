@@ -10,14 +10,14 @@ import javax.imageio.ImageIO;
 public class Util {
 	
 	public static byte[] getImageByteArray(BufferedImage image, String encoding) throws IOException {
-		long start = System.nanoTime();
+		//long start = System.nanoTime();
 		
 		image = convertImage(image);
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		ImageIO.write(image, encoding, outputStream);
 		byte[] message = outputStream.toByteArray();
 		
-		System.out.println("Encoding time: "+(System.nanoTime()-start)/1_000_000+"ms");
+		//System.out.println("Encoding time: "+(System.nanoTime()-start)/1_000_000+"ms");
 		return message;
 	}
 	

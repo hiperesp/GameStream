@@ -20,9 +20,9 @@ public interface IProtocol {
 			new Protocol(Header.PING,			new byte[] {0x71}),
 			new Protocol(Header.PONG,			new byte[] {0x72}),
 			new Protocol(Header.PONG_OK,		new byte[] {0x73}),
-			new Protocol(Header.AUTHENTICATE,	new byte[] {0x74}),
 			new Protocol(Header.AUTHENTICATED,	new byte[] {0x75}),
 			new Protocol(Header.UNAUTHENTICATED,new byte[] {0x76}),
+			new Protocol(Header.AUTHENTICATE,	new byte[] {0x74}),
 	};
 	public static final int CHUNK_BYTE_SIZE = 1;
 	public static final Protocol[] CHUNK = new Protocol[] {
